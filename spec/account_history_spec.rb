@@ -9,7 +9,7 @@ describe AccountHistory do
   end
 
   describe '#record_debit' do
-    let(:first_deposit) { {date: Date.today.to_s, credit: false, debit: 10, balance: balance} }
+    let(:first_deposit) { {date: Date.today.to_s, credit: "", debit: 10, balance: balance} }
     it 'should correctly record debit details' do
       account_history.record_debit(10, balance)
       expect(account_history.transactions).to include first_deposit
@@ -18,7 +18,7 @@ describe AccountHistory do
 
   describe '#record_withdrawl' do
     let(:new_balance) { double :new_balance }
-    let(:first_withdrawl) { {date: Date.today.to_s, credit: 5, debit: false, balance: new_balance} }
+    let(:first_withdrawl) { {date: Date.today.to_s, credit: 5, debit: "", balance: new_balance} }
     it 'should correctly record withdrawl details' do
       account_history.record_withdrawl(5, new_balance)
       expect(account_history.transactions).to include first_withdrawl
